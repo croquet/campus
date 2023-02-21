@@ -1,7 +1,7 @@
 {
-  "name": "my-croquet-microverse-world",
+  "name": "microverse-campus-world",
   "version": "1.0.0",
-  "description": "A World in Croquet Microverse",
+  "description": "A Campus World in Croquet Microverse",
   "scripts": {
     "start": "npm-run-all --parallel file-server watch-server",
     "file-server": "file-server --port 9684",
