@@ -27,7 +27,7 @@ class OpenRefineryPortalActor {
             depth: 0.05,
             frameColor: 8947848,
             height: 3.3,
-            portalURL: "default",
+            portalURL: "../gallery",
             type: "2d",
             width: 4.1,
         });
