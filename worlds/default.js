@@ -9,7 +9,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "livemap.js", "drive.js", "earth.js", "spin.js", "pendulum.js", "openPortal.js", "cascade.js"
+        "lights.js", "livemap.js", "drive.js", "earth.js", "spin.js", "pendulum.js", "openPortal.js", "cascade.ts"
     ];
 
     const frameColor = 0x888888;

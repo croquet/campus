@@ -16,9 +16,12 @@
 // The prototype classes ActorBehavior and PawnBehavior provide
 // the features defined at the card object.
 
-import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+import {ActorBehavior, PawnBehavior, CardActor} from "../PrototypeBehavior";
 
 class CascadeBoxActor extends ActorBehavior {
+    base1: CardActor;
+    base2: CardActor;
+    spray: CardActor;
     setup() {
         if (!this.physicsWorld) {
             let physicsManager = this.service("PhysicsManager");
@@ -70,9 +73,6 @@ class CascadeBoxActor extends ActorBehavior {
     }
 
     removeObjects() {
-        if (this.children) {
-            [...this.children].forEach((c) => c.destroy());
-        }
     }
 
     removePhysics() {
@@ -88,6 +88,9 @@ class CascadeBoxActor extends ActorBehavior {
 }
 
 class CascadeActor extends ActorBehavior {
+    initialImpulseApplied: boolean;
+    collisionEventHandlerBehavior: string;
+    collisionEventHandlerMethod: string;
     setup() {
         /*
           variable kinematic is initialized based on physicsType and
@@ -203,7 +206,7 @@ class CascadeActor extends ActorBehavior {
           destroy() is a method of the base CardActor. It invokes all teardown() methods of attached
           behaviors. The Physics behavior removes the rigidBody from the Rapier world.
         */
-        if (this._translation[1] < -10) {
+        if (this.translation[1] < -10) {
             this.destroy();
         }
     }
@@ -239,6 +242,7 @@ class CascadeActor extends ActorBehavior {
 }
 
 class CascadePawn extends PawnBehavior {
+    obj: THREE.Mesh;
     setup() {
         /*
           Creates a Three.JS mesh based on the specified physicsShape and physicsSize.
@@ -296,6 +300,7 @@ class CascadePawn extends PawnBehavior {
   create a new card by calling createCard().
 */
 class SprayActor extends ActorBehavior {
+    running: boolean;
     setup() {
         /*
 
@@ -427,6 +432,7 @@ class SprayActor extends ActorBehavior {
 }
 
 class SprayPawn extends PawnBehavior {
+    obj: THREE.Mesh;
     setup() {
         [...this.shape.children].forEach((c) => this.shape.remove(c));
 
