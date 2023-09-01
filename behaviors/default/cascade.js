@@ -9,7 +9,16 @@
   Rapier provides bit-identical physical simulation so we use it on the Model/Actor side of Croquet.
 */
 
-class CascadeBoxActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class CascadeBoxActor extends ActorBehavior {
     setup() {
         if (!this.physicsWorld) {
             let physicsManager = this.service("PhysicsManager");
@@ -78,7 +87,7 @@ class CascadeBoxActor {
     }
 }
 
-class CascadeActor {
+class CascadeActor extends ActorBehavior {
     setup() {
         /*
           variable kinematic is initialized based on physicsType and
@@ -229,7 +238,7 @@ class CascadeActor {
     }
 }
 
-class CascadePawn {
+class CascadePawn extends PawnBehavior {
     setup() {
         /*
           Creates a Three.JS mesh based on the specified physicsShape and physicsSize.
@@ -286,7 +295,7 @@ class CascadePawn {
   calls spray() in a future loop at a 500 millisecond interval, and
   create a new card by calling createCard().
 */
-class SprayActor {
+class SprayActor extends ActorBehavior {
     setup() {
         /*
 
@@ -417,7 +426,7 @@ class SprayActor {
     }
 }
 
-class SprayPawn {
+class SprayPawn extends PawnBehavior {
     setup() {
         [...this.shape.children].forEach((c) => this.shape.remove(c));
 

@@ -1,4 +1,13 @@
-class PendulumActor {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class PendulumActor extends ActorBehavior {
     setup() {
         let d = 10;
 
@@ -99,7 +108,7 @@ class PendulumActor {
     }
 }
 
-class PendulumPawn {
+class PendulumPawn extends PawnBehavior {
     setup() {
         if (this.obj) {
             [...this.shape.children].forEach((o) => this.shape.remove(o));
@@ -120,7 +129,7 @@ class PendulumPawn {
     }
 }
 
-class PendulumLinkActor {
+class PendulumLinkActor extends ActorBehavior {
     setup() {
         this.addEventListener("pointerTap", "jolt");
     }
@@ -136,7 +145,7 @@ class PendulumLinkActor {
     }
 }
 
-class PendulumLinkPawn {
+class PendulumLinkPawn extends PawnBehavior {
     setup() {
         /*
           For a demo purpose, it does not override an existing shape
