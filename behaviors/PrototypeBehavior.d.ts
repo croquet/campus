@@ -796,17 +796,20 @@ export type WorldcoreExports = {
     GetPawn(id: string): CardPawn,
 };
 
-export type PhysicsExports = {
+// export type Rapier = typeof import("@dimforge/rapier3d");
+
+type PhysicsExports = {
     PhysicsVersion(): string,
-    Physics: any
+    Physics: any // Rapier
 };
 
-export type FrameExports = {
+
+type FrameExports = {
     sendToShell(command: string, ...args: Array<any>)
 }
 
 export type THREE = typeof import("three");
-export type MicroverseModule = {THREE: THREE} & WorldcoreExports & PhysicsExports & FrameExports & {getViewRoot(): any};
+type MicroverseModule = {THREE: THREE} & WorldcoreExports & PhysicsExports & FrameExports & {getViewRoot(): any};
 
 export type BehaviorMethod = Array<string>;
 export type PlaneMaterial = THREE.MeshStandardMaterial|Array<THREE.Material>;

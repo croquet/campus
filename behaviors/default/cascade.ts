@@ -129,7 +129,7 @@ class CascadeActor extends ActorBehavior {
             s = s / 2;
             cd = Microverse.Physics.ColliderDesc.ball(s);
         } else if (physicsShape === "cuboid") {
-            let s = this._cardData.physicsSize || [1, 1, 1];
+            let s:[number, number, number] = this._cardData.physicsSize || [1, 1, 1];
             s = [s[0] / 2, s[1] / 2, s[2] / 2];
             cd = Microverse.Physics.ColliderDesc.cuboid(...s);
         }
@@ -157,8 +157,7 @@ class CascadeActor extends ActorBehavior {
         if (physicsSensor) {
             this.registerCollisionEventHandler("intersection");
             cd.setSensor(true);
-            cd.setActiveEvents(Microverse.Physics.ActiveEvents.CONTACT_EVENTS |
-                               Microverse.Physics.ActiveEvents.INTERSECTION_EVENTS);
+            cd.setActiveEvents(Microverse.Physics.ActiveEvents.COLLISION_EVENTS);
         }
 
         this.call("Physics$PhysicsActor", "createCollider", cd);
