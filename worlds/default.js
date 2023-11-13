@@ -67,7 +67,7 @@ export function init(Constants) {
         {
             card: {
                 name: "drive code editor",
-                translation: [149.7867578489887, 1.05, -91.04373902664706],
+                translation: [149.7867578489887, 0.95, -91.04373902664706],
                 rotation: [0, -0.8748879560491569, 0, 0.4843253703453173],
                 layers: ["pointer"],
                 type: "code",

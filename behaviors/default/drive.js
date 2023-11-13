@@ -9,7 +9,7 @@ import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
 
 class DriveActor extends ActorBehavior {
     setup() {
-        if (this.speed === undefined) this.speed = 0.1;
+        if (this.speed === undefined) this.speed = 0.08;
         if (this.angle === undefined) this.angle = 0.02;
         if (this.running === undefined) {
             this.running = true;
@@ -24,12 +24,6 @@ class DriveActor extends ActorBehavior {
         this.future(20).run();
         this.rotateBy([0, -this.angle, 0]);
         this.forwardBy(this.speed);
-        if (this.avatar) {
-            let t = this._translation;
-            this.avatar._translation = [t[0], t[1] + 1.6, t[2]];
-            this.avatar._rotation = this._rotation;
-            this.avatar.say("forceOnPosition");
-        }
     }
     /*
     newAngle(angle) {
