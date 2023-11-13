@@ -75,7 +75,7 @@ export function init(Constants) {
                 textScale: 0.001,
                 margins: {left: 32, top: 32, right: 32, bottom: 32},
                 width: 1.5,
-                height: 2.3,
+                height: 2.1,
                 depth: 0.05,
                 backgroundColor: 0xdddddd,
                 frameColor: frameColor,
